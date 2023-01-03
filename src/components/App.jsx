@@ -4,6 +4,8 @@ import { Box } from "./Box";
 import { ContactForm } from "./ContactForm";
 import { ContactList } from "./ContactList";
 import { Filter } from "./Filter";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 export class App extends Component {
   state = {
@@ -22,10 +24,14 @@ export class App extends Component {
 
   formSubmitHandler = ({ name, number }) => {
     const currentContact = { name: name, id: shortid.generate(), number: number }
-        
-    this.setState(prevState => ({
-      contacts: [currentContact, ...prevState.contacts]
-    }));
+    const contactDublicate = this.state.contacts.find(c => c.name === currentContact.name);
+    if (contactDublicate) {
+      Notify.failure(`${currentContact.name} is allready in contacts.`);
+      return;
+    }
+      this.setState(prevState => ({
+        contacts: [currentContact, ...prevState.contacts]
+      }));
   };
 
   getVisibleContacts = () => {
@@ -37,7 +43,6 @@ export class App extends Component {
 
   render() {
     const { filter } = this.state;
-
     const visibleContacts = this.getVisibleContacts();
     
     return (
