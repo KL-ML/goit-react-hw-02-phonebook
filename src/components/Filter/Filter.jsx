@@ -4,10 +4,6 @@ import { Box } from '../Box';
 export const Filter = ({onChange, value}) => {
     return (
         <Box
-            bg="background"
-            boxShadow="boxShadowSection"
-            borderRadius="normal"
-            overflow="hidden"
             p={4}
             display="flex"
             flexDirection="column"
