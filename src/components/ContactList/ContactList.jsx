@@ -6,10 +6,6 @@ export const ContactList = ({ contacts }) => {
     return (
         <Box
             as="ul"
-            bg="background"
-                boxShadow="boxShadowSection"
-                borderRadius="normal"
-                overflow="hidden"
             p={4}
             minHeight="contactListMinHeigth"
         >
