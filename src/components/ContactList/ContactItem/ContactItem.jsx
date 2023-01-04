@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "components/Box";
 
-export const ContactItem = ({ contacts }) => {
+export const ContactItem = ({ contacts, onDeleteContact }) => {
     return (<>
         {contacts.map(({ name, id, number }) => (
             <Box
@@ -22,10 +22,11 @@ export const ContactItem = ({ contacts }) => {
                     fontSize={0}
                     py={1}
                     px={2}
-                    type="button">
+                    type="button"
+                    onClick={() => onDeleteContact(id)}
+                >
                     Delete
                 </Box>
-                
             </Box>
         ))}
     </>)
